@@ -105,3 +105,26 @@ a {
     color-scheme: dark;
   }
 }
+
+
+/* craft */
+
+.list_card{
+  width: 100%;
+  padding: .5rem;
+  display: inline-block;
+  
+  
+}
+@media (min-width: 701px) and (max-width: 1120px){
+
+  .list_card{
+    width: 50%;
+  }
+}
+@media (min-width: 1121px){
+
+  .list_card{
+    width: 33%;
+  }
+}
