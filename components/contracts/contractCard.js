@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 // import fetch from "node-fetch"
 
 
-export default function ContractCard({contractInfo={}}) {
+export default function ContractCard({contractInfo={},onActivity}) {
 
   const [status,setStatus] = useState(contractInfo?.status||"");
   const [empList,setList] = useState({});
@@ -46,7 +46,10 @@ export default function ContractCard({contractInfo={}}) {
     fetch('/api/contract/updateContractStatus',{body:JSON.stringify({
       eid:contractInfo?.entityId,
       status:status
-    }),method:'POST'}).then(res=>console.log(`Contract updates ${contractInfo?.entityId}`))
+    }),method:'POST'}).then(res=>{
+      console.log(`Contract updates ${contractInfo?.entityId}`);
+      onActivity();
+    });
   }
 
   return (

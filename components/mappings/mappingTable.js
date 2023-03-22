@@ -42,16 +42,17 @@ export default function MappingTable({mappings}) {
           {mapData.map((row,index) => {
             let contracts = [],allocated=0,allocation=[]
             try {
-              contracts = JSON.parse(row.contracts);
+              contracts = row.contracts=='offboard'?'offboard':JSON.parse(row.contracts);
               allocation = JSON.parse(row.allocation);
               allocated = JSON.parse(row.allocation).reduce((total,num)=>total+parseInt(num),0)
+              debugger
             } catch (error) {
-              
+              debugger
             }
             return <>
             <TableRow key={row.emp}>
               <TableCell>{row.emp}</TableCell>
-              <TableCell align="right">{contracts.map(c=><><span>{c}</span><br/></>)}</TableCell>
+              <TableCell align="right">{contracts=='offboard'?<span>OffBoarded</span>:contracts.map(c=><><span>{c}</span><br/></>)}</TableCell>
               <TableCell align="right">{allocation.map(c=><><span>{c}</span><br/></>)}</TableCell>
               <TableCell align="right">{allocated}</TableCell>
               <TableCell align="right">

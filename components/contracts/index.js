@@ -33,11 +33,15 @@ export default function Contracts({contracts:contractsList}){
         }
         
     }
+
+    const onActivity = ()=>{
+        performSearch('')
+    }
     return <Container maxWidth="lg">
         <Search performSearch={performSearch} label={"Search Contracts by worker id or allocation percentage"}/>
         {contracts.map(w=>{
         return <div data-testid='contract-card' className="list_card" key={`contract${w.entityId}`}>
-            <ContractCard contractInfo={w}/>
+            <ContractCard onActivity={onActivity} contractInfo={w}/>
             </div>
     })}</Container>
 }

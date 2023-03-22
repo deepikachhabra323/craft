@@ -60,9 +60,10 @@ function DetailWorker({showDetail,workerInfo,onClose}) {
   useEffect(()=>{
     fetch(`/api/mapping/getMap?q=${entityId}`,{body:JSON.stringify({eid:entityId}),method:'POST'}).then(res=>res.json()).then((res)=>{
       let maps = res.maps;
-      if(maps.length && maps!='offboard')
-      setMap({contracts:JSON.parse(maps[0].contracts),allocation:JSON.parse(maps[0].allocation)})
-      else if(maps=='offboard')setMap({contracts:'offboard',allocation:[]}) 
+
+      if(maps.length && maps[0].contracts!='offboard')
+      setMap({contracts:JSON.parse(maps[0].contracts),allocation:JSON.parse(maps[0].allocation),mid:maps[0].entityId})
+      else if(maps.length && maps[0].contracts=='offboard')setMap({contracts:'offboard',allocation:[],mid:maps[0].entityId}) 
       else setMap({contracts:[],allocation:[]})
     })
   },[workerInfo.entityId])
@@ -72,15 +73,13 @@ function DetailWorker({showDetail,workerInfo,onClose}) {
 
   const offBoard = (eid='') =>{ // entitiy id of worker
     //we'll call api to offboard this worker
-    // offBoardWorker(eid)
-    if(eid.length)
-    fetch('/api/mapping/offBoard',{body:JSON.stringify({eid:eid}),method:'POST'})
+    // if(eid.length)
+    fetch('/api/mapping/offBoard',{body:JSON.stringify({eid:eid||`_${entityId}`}),method:'POST'}).then(res=>handleClose())
   };
-  const onBoard = (eid) =>{ // entitiy id of worker
+  const onBoard = (eid='') =>{ // entitiy id of worker
     //we'll call api to onboard this worker
-    // onBoardWorker(eid)
-    if(eid.length)
-    fetch('/api/mapping/onBoard',{body:JSON.stringify({eid:eid}),method:'POST'})
+    // if(eid.length)
+    fetch('/api/mapping/onBoard',{body:JSON.stringify({eid:eid||`_${entityId}`}),method:'POST'}).then(res=>handleClose())
   };
 
   return (
@@ -105,7 +104,7 @@ function DetailWorker({showDetail,workerInfo,onClose}) {
               {/* <span><b>Allocation %</b></span> */}
               {map.contracts.map((cr,i)=><span>{cr}({map.allocation[i]})</span>)}
             </div>:null}</div>
-            <Button data-testid="worker-action-btn" size="small" onClick={()=>map && map.contracts!='offboard'?offBoard(entityId):onBoard(entityId)}>{map && map.contracts!='offboard'?'Off Board':'On Board'}</Button>
+            <Button data-testid="worker-action-btn" size="small" onClick={()=>map && map.contracts!='offboard'?offBoard(map?.mid):onBoard(map?.mid)}>{map && map.contracts!='offboard'?'Off Board':'On Board'}</Button>
           </Typography>
           
         </Box>
