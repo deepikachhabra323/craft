@@ -43,8 +43,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 241, 240, 245;
+    --background-end-rgb: 241, 240, 245;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
@@ -122,9 +122,47 @@ a {
     width: 50%;
   }
 }
+
+.craft-parent-image-container{
+  height: 250px; 
+}
+.craft-parent-image{
+  width: 100%;
+  height: 100%;
+  padding: .6rem;
+  position: relative;
+}
+.craft-parent-image img{
+  position: relative !important;
+  width: 100%;
+  height: 100%;
+}
+.craft-demo-banner-text{
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 5rem;
+  position: absolute;
+  padding: 1.5rem;
+}
+.craft-demo-banner-text-left{
+  left: 0;
+}
+.craft-demo-banner-text-right{
+  right: 0;
+  bottom: 0;
+}
 @media (min-width: 1121px){
 
   .list_card{
     width: 33%;
+  }
+  .craft-parent-image-container{
+    height: 400px;  
+  }
+  .craft-demo-banner-text{
+    font-size: 7rem;
+    line-height: 8rem;
+    padding: 2rem;
   }
 }

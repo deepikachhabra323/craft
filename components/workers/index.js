@@ -5,11 +5,13 @@ import Container from '@mui/material/Container';
 export default function Workers({workers:workersList}){
     const [workers,setWorkers] = useState(workersList)
     useEffect(()=>{
-        setWorkers(workers)
-    },[workersList])
-    return <Container maxWidth="lg">{workers.map(w=>{
+        setWorkers(workers);
+        // console.log(workers)
+    },[workersList]);
+
+    return <Container maxWidth="lg">{workers.length?workers.map(w=>{
         return <div className="list_card" key={`worker${w.entityId}`}>
-            <WorkerCard workerInfo={w}/>
+                <WorkerCard workerInfo={w}/>
             </div>
-    })}</Container>
+    }):<span>No workers found.</span>}</Container>
 }
