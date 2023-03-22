@@ -109,9 +109,11 @@ export default function App({ Component, pageProps }) {
     // fetch('/api/getWorkers').then(res=>console.log(res))
     // fetch('/api/getContracts').then(res=>console.log(res))
   },[])
-  return <>
-  <Banner/>
-  <Component {...pageProps} />
-  </>
+  return <section className='text-center'>
+    <div className="parent">
+      <Banner/>
+      <Component {...pageProps} />
+    </div>
+    </section>
   
 }

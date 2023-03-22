@@ -6,6 +6,12 @@
   padding: 6rem;
   min-height: 100vh;
 }
+.colorDark{
+  color: #000000de;
+}
+.textCenter{
+  text-align: center;
+}
 
 .description {
   display: inherit;
@@ -46,7 +52,10 @@
   max-width: 100%;
 }
 
-.card {
+.module-card {
+  display: inline-block;
+  max-width: 47%;
+  margin: 1rem;
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
