@@ -8,10 +8,10 @@ export default function Workers({list=[]}){
 export async function getServerSideProps({ req }) {
     try {
         let res =  await getWorkers();
-        // console.log("res",res)
+        console.log("res",res)
         let list = JSON.parse(JSON.stringify(res));
         let map = await getMap(list[0].entityId);
-        console.log('map',map)
+        // console.log('map',map)
         return {
             props: {
             list,

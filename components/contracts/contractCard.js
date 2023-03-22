@@ -38,6 +38,10 @@ export default function ContractCard({contractInfo={}}) {
     setStatus(event.target.value);
   };
 
+  const assignWorker =  () =>{
+
+  }
+
   const updateContract = () =>{
     fetch('/api/contract/updateContractStatus',{body:JSON.stringify({
       eid:contractInfo?.entityId,
@@ -84,6 +88,7 @@ export default function ContractCard({contractInfo={}}) {
         </CardContent>
         <CardActions>
         <Button size="small" onClick={updateContract}>Update Status</Button>
+        <Button size="small" onClick={assignWorker}>Assign Worker</Button>
         </CardActions>
       </Card>
     </Box>

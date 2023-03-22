@@ -7,17 +7,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 
-export default function Search({performSearch}) {
+export default function Search({performSearch,label="Search here"}) {
 
     const [searchText,setSearch] = useState('')
   return (
     <Paper
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400,margin:'1rem' }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Search Contracts by worker id or allocation percentage"
+        placeholder={label}
         inputProps={{ 'aria-label': 'Search Contracts',"data-testid": "search-input" }}
         
         onChange={(e)=>{

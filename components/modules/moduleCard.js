@@ -16,7 +16,7 @@ export default function ModuleCard({title='',subTitle='',url='/'}) {
   return (
     <Card className='module-card'>
         <Link href={url}>
-            <IconButton aria-label="play/pause">
+            <IconButton aria-label="wysiwygIcon">
                 <WysiwygIcon sx={{ height: 100, width: 100 }} />
             </IconButton>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
