@@ -100,7 +100,8 @@ function DetailWorker({showDetail,workerInfo,onClose}) {
             Employee Role: {workerInfo?.role}
             <br/>
             <div>{map && map.contracts.length && map.contracts!='offboard'?<div>
-              <span><b>Contract(allocated %)</b></span>
+              <span><b>Contracts(allocated %)</b></span>
+              <br/>
               {/* <span><b>Allocation %</b></span> */}
               {map.contracts.map((cr,i)=><span>{cr}({map.allocation[i]})</span>)}
             </div>:null}</div>
